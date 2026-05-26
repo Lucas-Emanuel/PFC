@@ -9,7 +9,7 @@
     Victoria Dala Pegorara Souto
 
 # resumo
-O presente trabalho apresenta um estudo de um método de otimização de dispositivos fotônicos baseados em Ressonância Plasmônica de Superfície Localizada (LSPR) visando o aumento de sensibilidade para aplicações de biossensoriamento. Biossensores baseados em LSPR oferecem a vantagem de serem miniaturizáveis e portáteis devido o seu tamanho diminuto sem comprometer a sensibilidade da analise. O método visa maximizar a energia absorvida pelo dispositivo, que representa uma maior interação entre a fonte de luz e os elétrons livres na superfície do material.
+O presente trabalho apresenta um estudo de um método de otimização de dispositivos fotônicos baseados em Ressonâncias de Plásmons de Superfície Localizado (LSPR) visando o aumento de sensibilidade para aplicações de biossensoriamento. Biossensores baseados em LSPR oferecem a vantagem de serem miniaturizáveis e portáteis devido o seu tamanho diminuto sem comprometer a sensibilidade da analise. O método visa maximizar a energia absorvida pelo dispositivo, que representa uma maior interação entre a fonte de luz e os elétrons livres na superfície do material.
 Geralmente métodos numéricos de Diferenças Finitas no Domínio do Tempo (FDTD) são utilizados para a simulação da resposta desse tipo de dispositivo. Porém, essa tarefa requer um esforço computacional enorme, demandando em média de 9m e 21s por simulação. Com o objetivo de acelerar o processo de simulação e tornar viável o uso de algoritimos de otimização já conhecidos, este trabalho apresenta uma abordagem de aproximação utilizando Redes Neurais Artificiais (RNA).
 O uso dessa abordagem permitiu uma redução de 90% do tempo gasto com simulações numéricas durante o processo de otimização. Permitindo obter dispositivos com resposta X% melhor do que obtida através de exploração aleatória.
 
@@ -40,7 +40,7 @@ Além disso, diversas doenças infecciosas possuem elevada capacidade de dissemi
 
 |===###---| Verificar se as citações fazem sentido.
 
-Os sensores ópticos baseados em ressonância plasmônica localizada de superfície, conhecidos como sensores LSPR (Localized Surface Plasmon Resonance), têm recebido grande destaque nas últimas décadas devido à sua elevada sensibilidade, rapidez de resposta e capacidade de detectar substâncias em baixas concentrações. Essas características tornam essa tecnologia especialmente promissora para aplicações em biossensoriamento, monitoramento ambiental e diagnóstico biomédico. Em geral, sensores ópticos destinados à detecção biológica podem ser classificados em metodologias baseadas em ressonâncias internas e metodologias fundamentadas na amplificação de sinais externos. Dentro do primeiro grupo, os dispositivos LSPR se destacam pela eficiência e simplicidade operacional [9,10].
+Os sensores ópticos baseados em ressonância plasmônica localizada de superfície, conhecidos como sensores LSPR, têm recebido grande destaque nas últimas décadas devido à sua elevada sensibilidade, rapidez de resposta e capacidade de detectar substâncias em baixas concentrações. Essas características tornam essa tecnologia especialmente promissora para aplicações em biossensoriamento, monitoramento ambiental e diagnóstico biomédico. Em geral, sensores ópticos destinados à detecção biológica podem ser classificados em metodologias baseadas em ressonâncias internas e metodologias fundamentadas na amplificação de sinais externos. Dentro do primeiro grupo, os dispositivos LSPR se destacam pela eficiência e simplicidade operacional [9,10].
 
 O funcionamento dos sensores LSPR está associado à interação entre a radiação eletromagnética incidente e nanoestruturas metálicas cujas dimensões são menores que o comprimento de onda da luz utilizada na excitação. Quando iluminadas, essas nanoestruturas apresentam um fenômeno de ressonância plasmônica localizada, produzindo um pico característico de absorção no espectro óptico do dispositivo. A posição espectral dessa ressonância é altamente dependente das propriedades dielétricas do meio ao redor da nanoestrutura. Dessa forma, pequenas alterações nas proximidades do sensor, como a presença de moléculas, vírus, bactérias ou biomarcadores, provocam deslocamentos detectáveis na frequência ou no comprimento de onda de ressonância, permitindo a identificação da interação biológica ocorrida [10].
 
@@ -147,13 +147,9 @@ k_{SPP}(\omega) = k_0 \sqrt{\frac{\varepsilon_{metal}(\omega)\varepsilon_{diel}}
 
 onde k0 = ω/c é o vetor de onda no espaço livre, e εmetal(ω) é a permissividade do metal
 que pode ser calculada pela Equação 2.13. Quando |εmetal(ω)| >> εdiel, o vetor de onda kSPP
-excede o vetor de onda da luz no dielétrico, k0
-√
-εdiel. Este desajuste de momento no plano
-impede que um feixe de luz incidente excite diretamente os SPPs em uma interface plana,
-pois o momento paralelo da luz kk = k0
-√
-εdiel é insuficiente para satisfazer a relação de
+excede o vetor de onda da luz no dielétrico, k0√εdiel. Este desajuste de momento no plano
+impede que um feixe de luz incidente excite diretamente os Plásmons-Poláritons de Superfície (SPPs) em uma interface plana,
+pois o momento paralelo da luz kk = k0√εdiel é insuficiente para satisfazer a relação de
 dispersão dos SPPs.
 Para superar essa limitação, métodos de acoplamento são utilizados, como:
 • Prismas (configurações de Kretschmann ou Otto): Adicionam momento extra via
@@ -164,6 +160,22 @@ plano.
 necessário.
 
 ### 2.2 Ressonância Localizada de Plásmons de Superfície (LSPR)
+
+Em contraste com os SPPs em interfaces metal-dielétrico extensas, as LSPRs ocorrem em partículas metálicas ou nanoestruturas
+de dimensão subcomprimento de onda. Em certas frequências, os elétrons de condução
+dentro dessas nanoestruturas oscilam coletivamente, produzindo uma resposta ressonante
+conhecida como plásmon de superfície localizado. Como a estrutura é muito menor que o
+comprimento de onda da luz incidente, os campos ao redor da partícula apresentam amplificação localizada, também chamados de hot spots.
+Se uma pequena esfera metálica (ou outra forma) for iluminada por um campo eletromagnético externo, os elétrons livres são induzidos a oscilar em relação ao retículo carregado
+positivamente. Em uma frequência específica ωLSPR, a força restauradora da nuvem eletrônica se iguala à força impulsionadora do campo elétrico, resultando em uma ressonância
+forte. Isso leva a campos significativamente amplificados na superfície do metal.
+Para uma nanopartícula metálica cujas dimensões são muito menores que o comprimento
+de onda incidente, a aproximação quasiestática considera o campo elétrico como uniforme
+em todo o volume da partícula. No caso mais simples de uma nanopartícula esférica com raio
+a << λ0 em um ambiente homogêneo com permissividade εenv, encontramos uma ressonância
+quando:
+
+
 ### 2.3 Diferenças Finitas no Domínio do Tempo (FDTD)
 ### 2.4 Algoritimo Genético (GA)
 ### 2.5 Redes Neurais Artificiais (RNA)
