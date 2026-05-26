@@ -110,11 +110,63 @@ bem como os próximos passos a serem desenvolvidos.
 
 # capítulo 2
 ## revisão teórica ou descrição do processo
-Este capítulo aborda os fundamentos teóricos necessários para o entendimento dos conceitos abordados neste trabalho. O funcionamento do dispositivo em questão se baseia 
+Este capítulo apresenta os fundamentos teóricos necessários para a compreensão dos conceitos e metodologias empregados ao longo deste trabalho. O princípio de funcionamento do biossensor estudado baseia-se na interação entre campos eletromagnéticos incidentes e os elétrons livres presentes em superfícies metálicas, fenômeno responsável pela excitação de oscilações plasmônicas. Esses efeitos são descritos por meio dos conceitos de Plasmônica e Ressonância Localizada de Plásmons de Superfície (LSPR), fundamentais para o entendimento do mecanismo de sensoriamento utilizado.
 
-### 2.1 conceito X
-### 2.2 processo X
-### 2.3 instrumentação X
+A modelagem e análise da resposta óptica dessas nanoestruturas são realizadas utilizando o método numérico de Diferenças Finitas no Domínio do Tempo (FDTD), amplamente empregado em simulações eletromagnéticas devido à sua capacidade de resolver problemas complexos envolvendo propagação e interação de ondas eletromagnéticas em diferentes materiais e geometrias.
+
+Além disso, este capítulo também aborda os fundamentos da metodologia de otimização adotada no presente trabalho, baseada na utilização conjunta de Algoritmos Genéticos e Redes Neurais Artificiais. A combinação dessas técnicas permite acelerar o processo de busca por geometrias ótimas de nanoestruturas plasmônicas, reduzindo significativamente o custo computacional associado às simulações eletromagnéticas convencionais.
+
+### 2.1 Plasmônica
+A Plasmônica é a área da física responsável pelo estudo dos plásmons e dos fenôenos associados à interação entre radiação eletromagnética e elétrons livres em materiais condutores, como metais e semicondutores. Os plásmons podem ser definidos como oscilações coletivas da densidade eletrônica em um material sólido. Embora não sejam partículas reais, essas oscilações apresentam comportamento análogo ao de partículas, sendo classificadas como quasipartículas. Do ponto de vista físico, os plásmons correspondem ao quantum associado às oscilações coletivas de um plasma eletrônico no interior ou na superfície de um material.
+
+Essas oscilações podem ocorrer de diferentes formas, destacando-se os plásmons confinados em interfaces entre materiais metálicos e dielétricos, como a interface entre ouro e ar. Nessas superfícies, a interação entre os elétrons livres do metal e um campo eletromagnético incidente pode produzir modos acoplados de propagação conhecidos como polaritons plasmônicos de superfície. Os polaritons também são classificados como quasipartículas, resultantes do acoplamento entre ondas eletromagnéticas e oscilações eletrônicas coletivas. Como consequência dessa interação, surgem modos capazes de concentrar e confinar energia eletromagnética em regiões submicrométricas, característica fundamental para aplicações em sensoriamento óptico e dispositivos nanoestruturados.
+
+Entretanto, a excitação direta desses modos plasmônicos não ocorre simplesmente pela incidência normal de um feixe luminoso sobre a superfície metálica. Isso acontece porque os plásmons de superfície apresentam condições específicas de conservação de momento que normalmente não são satisfeitas pela luz propagando-se livremente no espaço. Dessa forma, técnicas especiais de acoplamento ou estruturas nanoestruturadas são necessárias para possibilitar a transferência eficiente de energia entre a radiação incidente e as oscilações eletrônicas na superfície do metal.
+
+Além disso, a existência de plásmons de superfície depende diretamente das propriedades eletromagnéticas dos materiais envolvidos, especialmente da permissividade elétrica do metal em frequências ópticas. O comportamento óptico desses materiais pode ser descrito pelo modelo de Drude, que considera os elétrons de condução como um gás de elétrons livres sujeito à ação de campos eletromagnéticos externos. Esse modelo fornece uma descrição importante da resposta dielétrica dos metais e permite compreender as condições necessárias para a ocorrência de ressonâncias plasmônicas em superfícies metálicas.
+
+
+\begin{equation}
+\varepsilon(\omega) = \varepsilon_{\infty} - \frac{\omega_p^2}{\omega(\omega + i\gamma)}
+\end{equation}
+
+onde ωp é a frequência do plasma, γ o fator de amortecimento, e ε∞ a contribuição de elétrons
+ligados em altas frequências. Para a plasmônica é necessário que o material tenha:
+• Parte real negativa para ε(ω): indicando que o material suporta ressonância de plásmons de superfície (SPR). Isso ocorre porque o campo eletromagnético acopla com
+a oscilação dos elétrons na superfície, permitindo o confinamento dos campos eletromagnéticos.
+• Parte imaginaria pequena para ε(ω): o que indica baixa perda de energia. Dessa forma
+as ressonâncias plasmônicas não são amortecidas, gerando ressonâncias mais pronuncias.
+
+Na interface plana entre um metal com permissividade εmetal(ω) e um dielétrico com
+permissividade εdiel(ω) a relação de disperção é dada por:
+
+\begin{equation}
+k_{SPP}(\omega) = k_0 \sqrt{\frac{\varepsilon_{metal}(\omega)\varepsilon_{diel}}
+{\varepsilon_{metal}(\omega) + \varepsilon_{diel}}}
+\end{equation}
+
+onde k0 = ω/c é o vetor de onda no espaço livre, e εmetal(ω) é a permissividade do metal
+que pode ser calculada pela Equação 2.13. Quando |εmetal(ω)| >> εdiel, o vetor de onda kSPP
+excede o vetor de onda da luz no dielétrico, k0
+√
+εdiel. Este desajuste de momento no plano
+impede que um feixe de luz incidente excite diretamente os SPPs em uma interface plana,
+pois o momento paralelo da luz kk = k0
+√
+εdiel é insuficiente para satisfazer a relação de
+dispersão dos SPPs.
+Para superar essa limitação, métodos de acoplamento são utilizados, como:
+• Prismas (configurações de Kretschmann ou Otto): Adicionam momento extra via
+reflexão interna.
+• Grades de difração: Introduzem componentes adicionais de momento ao longo do
+plano.
+• Rugosidades ou nanopartículas: Quebras de simetria locais fornecem o momento
+necessário.
+
+### 2.2 Ressonância Localizada de Plásmons de Superfície (LSPR)
+### 2.3 Diferenças Finitas no Domínio do Tempo (FDTD)
+### 2.4 Algoritimo Genético (GA)
+### 2.5 Redes Neurais Artificiais (RNA)
 ### 2.4 resumo do capítulo
 
 # capítulo 3
