@@ -9,9 +9,9 @@
     Victoria Dala Pegorara Souto
 
 # resumo
-O presente trabalho apresenta um estudo de um método de optimização de dispositivos fotônicos baseados em Ressonância Plasmônica de Superfície Localizada (LSPR) visando o aumento de sensibilidade para aplicações de biossensoriamento. Biossensores baseados em LSPR oferecem a vantagem de serem miniaturizáveis e portáteis devido o seu tamanho diminuto sem comprometer a sensibilidade da analise. O método visa maximizar a energia absorvida pelo dispositivo, que representa uma maior interação entre a fonte de luz e os elétrons livres na superfície do material.
-Geralmente métodos numéricos de Diferenças Finitas no Domínio do Tempo (FDTD) são utilizados para a simulação da resposta desse tipo de dispositivo. Porém, essa tarefa requer um esforço computacional enorme, demandando em média de 9m e 21s por simulação. Com o objetivo de acelerar o processo de simulação e tornar viável o uso de algorítimos de optimização já conhecidos, este trabalho apresenta uma abordagem de aproximação utilizando Redes Neurais Artificiais (RNA).
-O uso dessa abordagem permitiu uma redução de 90% do tempo gasto com simulações numéricas durante o processo de optimização. Permitindo obter dispositivos com resposta X% melhor do que obtida através de exploração aleatória.
+O presente trabalho apresenta um estudo de um método de otimização de dispositivos fotônicos baseados em Ressonância Plasmônica de Superfície Localizada (LSPR) visando o aumento de sensibilidade para aplicações de biossensoriamento. Biossensores baseados em LSPR oferecem a vantagem de serem miniaturizáveis e portáteis devido o seu tamanho diminuto sem comprometer a sensibilidade da analise. O método visa maximizar a energia absorvida pelo dispositivo, que representa uma maior interação entre a fonte de luz e os elétrons livres na superfície do material.
+Geralmente métodos numéricos de Diferenças Finitas no Domínio do Tempo (FDTD) são utilizados para a simulação da resposta desse tipo de dispositivo. Porém, essa tarefa requer um esforço computacional enorme, demandando em média de 9m e 21s por simulação. Com o objetivo de acelerar o processo de simulação e tornar viável o uso de algoritimos de otimização já conhecidos, este trabalho apresenta uma abordagem de aproximação utilizando Redes Neurais Artificiais (RNA).
+O uso dessa abordagem permitiu uma redução de 90% do tempo gasto com simulações numéricas durante o processo de otimização. Permitindo obter dispositivos com resposta X% melhor do que obtida através de exploração aleatória.
 
 # agradecimentos
 # sumário
@@ -75,11 +75,43 @@ Em contrapartida, outras arquiteturas de sensores LSPR utilizam nanoestruturas m
 
 Além da possibilidade de reutilização, sensores LSPR baseados em substratos fixos apresentam vantagens relacionadas à integração tecnológica. Estudos recentes demonstram que essas plataformas podem ser incorporadas a sistemas microfluídicos, possibilitando o desenvolvimento de dispositivos compactos e automatizados para aplicações em diagnóstico no ponto de atendimento, conhecidos como sistemas point-of-care [9]. Essa integração favorece a miniaturização dos biossensores, reduz o volume de amostra necessário para análise e contribui para a realização de testes rápidos, portáteis e de baixo custo, características particularmente relevantes em aplicações clínicas e monitoramento de doenças infecciosas.
 
+Neste contexto, o presente trabalho tem como objetivo dar continuidade e propor melhorias ao trabalho desenvolvido por [F. Aragão], voltado à otimização de nanoestruturas LSPR por meio da combinação entre algoritimos genéticos (GA) e Redes Neurais Artificiais (RNA). O desenvolvimento de biossensores plasmônicos com elevada sensibilidade depende fortemente da geometria das nanoestruturas utilizadas, uma vez que pequenas alterações dimensionais podem provocar mudanças significativas na resposta óptica do dispositivo. Dessa forma, a busca por geometrias ótimas constitui uma etapa fundamental no desenvolvimento de sensores mais eficientes e adequados para aplicações em biossensoriamento.
+
+Tradicionalmente, a análise e o projeto desses dispositivos são realizados por meio de métodos numéricos, com destaque para o método de Diferenças Finitas no Domínio do Tempo (FDTD). Embora apresente elevada precisão, esse método demanda grande esforço computacional, tornando processos de otimização particularmente custosos. Em média, uma única simulação pode requerer aproximadamente 9 minutos e 21 segundos de processamento, o que inviabiliza a exploração eficiente de grandes espaços de parâmetros geométricos utilizando técnicas convencionais de otimização.
+
+Com o objetivo de reduzir o custo computacional associado às simulações eletromagnéticas, o trabalho de [F. Aragão] propôs uma abordagem baseada na utilização de Redes Neurais Artificiais para aproximar a resposta óptica dos dispositivos LSPR, permitindo acelerar significativamente o processo de avaliação das estruturas durante a otimização. A utilização dessa estratégia possibilita empregar algoritimos de otimização já consolidados, como algoritimos genéticos, de maneira muito mais eficiente, reduzindo drasticamente o tempo necessário para obtenção de soluções adequadas.
+
+Dando continuidade a essa linha de pesquisa, o escopo do presente trabalho englobou a busca por uma geometria ótima de nanoestrutura plasmônica utilizando a metodologia proposta, combinando técnicas de otimização com modelos aproximadores baseados em RNA. Além da etapa computacional de otimização, também foi realizada a fabricação do molde correspondente ao dispositivo considerado ótimo, permitindo estabelecer as bases para futuras etapas experimentais relacionadas à produção física do sensor.
+
+Por fim, destaca-se que a caracterização óptica do dispositivo fabricado não faz parte do escopo deste trabalho, sendo proposta como continuidade futura da pesquisa. Essa etapa será fundamental para validar experimentalmente os resultados obtidos durante o processo de otimização computacional e analisar o desempenho do biossensor em condições reais de operação.
+
+
 ### 1.2 objetivos do projeto
+Levando em consideração o mencionado anteriormente, o desenvolvimento deste projeto tem como objetivos:
+
+a. Realizar a escrita da biblioteca de otimização em Python.
+b. Realizar o treinamento e validação da RNA.
+c. Executar rodadas de GA e otimizar seus parâmetros.
+d. Selecionar os melhore indivíduos para simulação.
+e. Fabricar o melhor dispositivo obtido.
+
 ### 1.3 estrutura da monografia
+Este trabalho está dividido em cinco capítulos, os quais contemplam a presente introdução,
+a revisão dos conceitos trabalhados, o desenvolvimento da biblioteca de otimização e treinamento da rede neural artificial, a apresentação dos resultados obtidos e por fim a conclusão.
+
+No capítulo 2 é realizada uma revisão sobre os principais conceitos e fenômenos trabalhados. Conceitos de simulação via Método de Diferenças Finitas no Domínio do Tempo, Algoritimo Genético e aproximação por Redes Neurais Artificiais são resgatados para explicar os componentes utilizados pelo método desenvolvido. Também é apresentado os efeitos plasmônicos e suas propriedades, como o confinamento da luz em dimensões menores que o seu comprimento de onda, e discutido como os elétrons livres na interface entre metal e dielétrico podem acoplar-se com ondas eletromagnéticas, dando origem às ondas de plásmons.
+
+No capítulo 3 é apresentado as metodologias empregadas para a geração de uma base de dados de treinamento, o treinamento da Rede Neural, e execução do algoritimo de otimização. Neste capítulo é apresentado a método de otimização do dispositivo, onde através da variação das dimensões dos nano discos de ouro a intensidade do campo elétrico é maximizada para um determinado comprimento de onda. Além disso, é apresentado um método de fabricação baseado na utilização de um molde de silício, que permite a fabricação facilitada de vários dispositivos idênticos. 
+
+No capítulo 4 são apresentados os resultados experimentais. Neste capítulo está a curva de evolução do algoritimo e a resposta do melhor individuo obtido, e também figuras de comparação de performance entre o método desenvolvido e o método GA puro.
+
+Por fim, no capítulo 5 são tecidas as conclusões e considerações finais sobre o projeto,
+bem como os próximos passos a serem desenvolvidos.
 
 # capítulo 2
 ## revisão teórica ou descrição do processo
+Este capítulo aborda os fundamentos teóricos necessários para o entendimento dos conceitos abordados neste trabalho. O funcionamento do dispositivo em questão se baseia 
+
 ### 2.1 conceito X
 ### 2.2 processo X
 ### 2.3 instrumentação X
