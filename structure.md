@@ -10,7 +10,7 @@
 
 # resumo
 O presente trabalho apresenta um estudo de um método de otimização de dispositivos fotônicos baseados em Ressonâncias de Plásmons de Superfície Localizado (LSPR) visando o aumento de sensibilidade para aplicações de biossensoriamento. Biossensores baseados em LSPR oferecem a vantagem de serem miniaturizáveis e portáteis devido o seu tamanho diminuto sem comprometer a sensibilidade da analise. O método visa maximizar a energia absorvida pelo dispositivo, que representa uma maior interação entre a fonte de luz e os elétrons livres na superfície do material.
-Geralmente métodos numéricos de Diferenças Finitas no Domínio do Tempo (FDTD) são utilizados para a simulação da resposta desse tipo de dispositivo. Porém, essa tarefa requer um esforço computacional enorme, demandando em média de 9m e 21s por simulação. Com o objetivo de acelerar o processo de simulação e tornar viável o uso de algoritimos de otimização já conhecidos, este trabalho apresenta uma abordagem de aproximação utilizando Redes Neurais Artificiais (RNA).
+Geralmente métodos numéricos de Diferenças Finitas no Domínio do Tempo (FDTD) são utilizados para a simulação da resposta desse tipo de dispositivo. Porém, essa tarefa requer um esforço computacional enorme, demandando em média de 9m e 21s por simulação. Com o objetivo de acelerar o processo de simulação e tornar viável o uso de algoritmos de otimização já conhecidos, este trabalho apresenta uma abordagem de aproximação utilizando Redes Neurais Artificiais (RNA).
 O uso dessa abordagem permitiu uma redução de 90% do tempo gasto com simulações numéricas durante o processo de otimização. Permitindo obter dispositivos com resposta X% melhor do que obtida através de exploração aleatória.
 
 # agradecimentos
@@ -75,11 +75,11 @@ Em contrapartida, outras arquiteturas de sensores LSPR utilizam nanoestruturas m
 
 Além da possibilidade de reutilização, sensores LSPR baseados em substratos fixos apresentam vantagens relacionadas à integração tecnológica. Estudos recentes demonstram que essas plataformas podem ser incorporadas a sistemas microfluídicos, possibilitando o desenvolvimento de dispositivos compactos e automatizados para aplicações em diagnóstico no ponto de atendimento, conhecidos como sistemas point-of-care [9]. Essa integração favorece a miniaturização dos biossensores, reduz o volume de amostra necessário para análise e contribui para a realização de testes rápidos, portáteis e de baixo custo, características particularmente relevantes em aplicações clínicas e monitoramento de doenças infecciosas.
 
-Neste contexto, o presente trabalho tem como objetivo dar continuidade e propor melhorias ao trabalho desenvolvido por [F. Aragão], voltado à otimização de nanoestruturas LSPR por meio da combinação entre algoritimos genéticos (GA) e Redes Neurais Artificiais (RNA). O desenvolvimento de biossensores plasmônicos com elevada sensibilidade depende fortemente da geometria das nanoestruturas utilizadas, uma vez que pequenas alterações dimensionais podem provocar mudanças significativas na resposta óptica do dispositivo. Dessa forma, a busca por geometrias ótimas constitui uma etapa fundamental no desenvolvimento de sensores mais eficientes e adequados para aplicações em biossensoriamento.
+Neste contexto, o presente trabalho tem como objetivo dar continuidade e propor melhorias ao trabalho desenvolvido por [F. Aragão], voltado à otimização de nanoestruturas LSPR por meio da combinação entre algoritmos genéticos (GA) e Redes Neurais Artificiais (RNA). O desenvolvimento de biossensores plasmônicos com elevada sensibilidade depende fortemente da geometria das nanoestruturas utilizadas, uma vez que pequenas alterações dimensionais podem provocar mudanças significativas na resposta óptica do dispositivo. Dessa forma, a busca por geometrias ótimas constitui uma etapa fundamental no desenvolvimento de sensores mais eficientes e adequados para aplicações em biossensoriamento.
 
 Tradicionalmente, a análise e o projeto desses dispositivos são realizados por meio de métodos numéricos, com destaque para o método de Diferenças Finitas no Domínio do Tempo (FDTD). Embora apresente elevada precisão, esse método demanda grande esforço computacional, tornando processos de otimização particularmente custosos. Em média, uma única simulação pode requerer aproximadamente 9 minutos e 21 segundos de processamento, o que inviabiliza a exploração eficiente de grandes espaços de parâmetros geométricos utilizando técnicas convencionais de otimização.
 
-Com o objetivo de reduzir o custo computacional associado às simulações eletromagnéticas, o trabalho de [F. Aragão] propôs uma abordagem baseada na utilização de Redes Neurais Artificiais para aproximar a resposta óptica dos dispositivos LSPR, permitindo acelerar significativamente o processo de avaliação das estruturas durante a otimização. A utilização dessa estratégia possibilita empregar algoritimos de otimização já consolidados, como algoritimos genéticos, de maneira muito mais eficiente, reduzindo drasticamente o tempo necessário para obtenção de soluções adequadas.
+Com o objetivo de reduzir o custo computacional associado às simulações eletromagnéticas, o trabalho de [F. Aragão] propôs uma abordagem baseada na utilização de Redes Neurais Artificiais para aproximar a resposta óptica dos dispositivos LSPR, permitindo acelerar significativamente o processo de avaliação das estruturas durante a otimização. A utilização dessa estratégia possibilita empregar algoritmos de otimização já consolidados, como algoritmos genéticos, de maneira muito mais eficiente, reduzindo drasticamente o tempo necessário para obtenção de soluções adequadas.
 
 Dando continuidade a essa linha de pesquisa, o escopo do presente trabalho englobou a busca por uma geometria ótima de nanoestrutura plasmônica utilizando a metodologia proposta, combinando técnicas de otimização com modelos aproximadores baseados em RNA. Além da etapa computacional de otimização, também foi realizada a fabricação do molde correspondente ao dispositivo considerado ótimo, permitindo estabelecer as bases para futuras etapas experimentais relacionadas à produção física do sensor.
 
@@ -99,11 +99,11 @@ e. Fabricar o melhor dispositivo obtido.
 Este trabalho está dividido em cinco capítulos, os quais contemplam a presente introdução,
 a revisão dos conceitos trabalhados, o desenvolvimento da biblioteca de otimização e treinamento da rede neural artificial, a apresentação dos resultados obtidos e por fim a conclusão.
 
-No capítulo 2 é realizada uma revisão sobre os principais conceitos e fenômenos trabalhados. Conceitos de simulação via Método de Diferenças Finitas no Domínio do Tempo, Algoritimo Genético e aproximação por Redes Neurais Artificiais são resgatados para explicar os componentes utilizados pelo método desenvolvido. Também é apresentado os efeitos plasmônicos e suas propriedades, como o confinamento da luz em dimensões menores que o seu comprimento de onda, e discutido como os elétrons livres na interface entre metal e dielétrico podem acoplar-se com ondas eletromagnéticas, dando origem às ondas de plásmons.
+No capítulo 2 é realizada uma revisão sobre os principais conceitos e fenômenos trabalhados. Conceitos de simulação via Método de Diferenças Finitas no Domínio do Tempo, Algoritmo Genético e aproximação por Redes Neurais Artificiais são resgatados para explicar os componentes utilizados pelo método desenvolvido. Também é apresentado os efeitos plasmônicos e suas propriedades, como o confinamento da luz em dimensões menores que o seu comprimento de onda, e discutido como os elétrons livres na interface entre metal e dielétrico podem acoplar-se com ondas eletromagnéticas, dando origem às ondas de plásmons.
 
-No capítulo 3 é apresentado as metodologias empregadas para a geração de uma base de dados de treinamento, o treinamento da Rede Neural, e execução do algoritimo de otimização. Neste capítulo é apresentado a método de otimização do dispositivo, onde através da variação das dimensões dos nano discos de ouro a intensidade do campo elétrico é maximizada para um determinado comprimento de onda. Além disso, é apresentado um método de fabricação baseado na utilização de um molde de silício, que permite a fabricação facilitada de vários dispositivos idênticos. 
+No capítulo 3 é apresentado as metodologias empregadas para a geração de uma base de dados de treinamento, o treinamento da Rede Neural, e execução do algoritmo de otimização. Neste capítulo é apresentado a método de otimização do dispositivo, onde através da variação das dimensões dos nano discos de ouro a intensidade do campo elétrico é maximizada para um determinado comprimento de onda. Além disso, é apresentado um método de fabricação baseado na utilização de um molde de silício, que permite a fabricação facilitada de vários dispositivos idênticos. 
 
-No capítulo 4 são apresentados os resultados experimentais. Neste capítulo está a curva de evolução do algoritimo e a resposta do melhor individuo obtido, e também figuras de comparação de performance entre o método desenvolvido e o método GA puro.
+No capítulo 4 são apresentados os resultados experimentais. Neste capítulo está a curva de evolução do algoritmo e a resposta do melhor individuo obtido, e também figuras de comparação de performance entre o método desenvolvido e o método GA puro.
 
 Por fim, no capítulo 5 são tecidas as conclusões e considerações finais sobre o projeto,
 bem como os próximos passos a serem desenvolvidos.
@@ -175,10 +175,56 @@ em todo o volume da partícula. No caso mais simples de uma nanopartícula esfé
 a << λ0 em um ambiente homogêneo com permissividade εenv, encontramos uma ressonância
 quando:
 
+\begin{equation}
+\mathrm{Re}[\varepsilon_{metal}(\omega_{LSPR})] \approx -\alpha \, \varepsilon_{env}
+\end{equation}
+
+onde α depende do formato da partícula (para uma esfera perfeita, α = 2). Se εmetal(ω)
+for suficientemente negativo, os elétrons de condução respondem fortemente ao campo externo em ωLSPR, produzindo uma oscilação de carga localizada.
+Para partículas não esféricas ou mais complexas, a frequência LSPR pode se dividir ou
+deslocar com base na razão de aspecto, nitidez das extremidades e outros fatores geométricos. Bastões, elipsoides e nanoestruturas não convencionais podem suportar múltiplas
+ressonâncias (por exemplo, modos longitudinais e transversais). Mesmo pequenas variações
+no tamanho ou formato podem causar deslocamentos perceptíveis em ωLSPR.
 
 ### 2.3 Diferenças Finitas no Domínio do Tempo (FDTD)
-### 2.4 Algoritimo Genético (GA)
+O método de Diferenças Finitas no Domínio do Tempo (FDTD, do inglês *Finite-Difference Time-Domain*) é uma técnica numérica amplamente utilizada para resolver as equações de Maxwell e simular a propagação e interação de ondas eletromagnéticas em diferentes materiais e estruturas. Esse método é especialmente importante em aplicações envolvendo radiofrequência, dispositivos fotônicos como fibras ópticas e guias de onda, e metasuperficies plasmônicas, pois permite analisar fenôenos eletromagnéticos complexos que dificilmente poderiam ser resolvidos de forma analítica.
+
+O princípio fundamental do método FDTD consiste em discretizar o espaço e o tempo em pequenas células, permitindo aproximar derivadas diferenciais por meio de diferenças finitas. A partir dessa discretização, as equações de Maxwell são resolvidas iterativamente ao longo do tempo, calculando a evolução dos campos elétrico e magnético em cada ponto da região simulada. Essa abordagem possibilita modelar diretamente a interação da radiação eletromagnética com materiais de diferentes propriedades dielétricas, incluindo estruturas metálicas utilizadas em dispositivos LSPR.
+
+Uma das principais vantagens do método FDTD é sua capacidade de lidar com geometrias complexas e materiais dispersivos, permitindo estudar efeitos como confinamento de campo eletromagnético, absorvância e distribuição espacial dos modos óptico. Além disso, como a solução é obtida no domínio do tempo, o método permite analisar uma ampla faixa espectral em uma única simulação, tornando-o particularmente adequado para aplicações em plasmônica e fotônica que dependem do deslocamento da resposta no espectro.
+
+No contexto de biossensores plasmônicos, o método FDTD é utilizado para calcular a resposta óptica das nanoestruturas e prever características importantes do dispositivo, como posição da ressonância, intensidade do campo elétrico localizado e sensibilidade a alterações no índice de refração do meio ao redor da estrutura. Essas informações são fundamentais para o processo de otimização geométrica do sensor, permitindo avaliar o desempenho de diferentes configurações antes da fabricação física do dispositivo.
+
+X FOTO FDTD
+Y FOTO MESH FDTD
+
+A Figura X apresenta a distribuição espacial do campo elétrico obtida por meio da simulação FDTD do dispositivo biossensor. É possível observar regiões de forte concentração de campo próximas às nanoestruturas metálicas, fenômeno diretamente associado ao confinamento eletromagnético característico das ressonâncias plasmônicas localizadas. Paralelamente, a Figura Y evidencia a malha numérica utilizada na discretização espacial da simulação, representada pelo quadriculado visível ao longo do domínio computacional.
+
+No método FDTD, a precisão dos resultados depende diretamente do tamanho das células que compõem a malha espacial (*mesh*). Quanto menores forem essas células, maior será a capacidade do modelo de representar detalhes geométricos da estrutura e variações rápidas dos campos eletromagnéticos. Entretanto, a redução do tamanho do *mesh* implica um aumento significativo do custo computacional da simulação.
+
+O custo de memória cresce aproximadamente de forma cúbica em relação à resolução espacial da malha, uma vez que a discretização ocorre simultaneamente nas três dimensões do espaço. Dessa forma, reduzir pela metade o tamanho das células implica aumentar significativamente a quantidade total de pontos necessários para representar o domínio simulado. Além disso, o custo temporal é ainda mais elevado, apresentando crescimento aproximado de quarta ordem. Isso ocorre porque, além do aumento no número de células espaciais, a estabilidade numérica do método exige passos temporais menores conforme a discretização espacial é refinada, aumentando drasticamente o número total de iterações necessárias para concluir a simulação.
+
+Como consequência, simulações envolvendo nanoestruturas plasmônicas frequentemente demandam elevado poder computacional, especialmente quando são necessárias malhas extremamente refinadas para representar detalhes nanométricos e regiões de forte confinamento de campo elétrico.
+
+
+### 2.4 Algoritmo Genético (GA)
+Os Algoritmos Genéticos são métodos de otimização e busca inspirados nos princípios da evolução natural e da seleção natural propostos por Charles Darwin. Essa abordagem foi formalizada e popularizada na década de 1970 pelo pesquisador John Henry Holland [FAZER UMA CITAÇÃO AQUI], sendo considerada uma das principais técnicas da área de computação evolutiva. O objetivo desses algoritmos é encontrar soluções adequadas para problemas complexos por meio de processos inspirados em mecanismos biológicos, como reprodução, mutação, recombinação genética e seleção dos indivíduos mais aptos.
+
+O funcionamento de um algoritmo genético baseia-se na evolução iterativa de uma população de indivíduos, onde cada indivíduo representa uma possível solução para o problema analisado. Inicialmente, é criada uma população com soluções aleatórias, que posteriormente são avaliadas por meio de uma função de aptidão responsável por medir a qualidade de cada indivíduo. A partir dessa avaliação, os indivíduos mais bem classificados possuem maior probabilidade de serem selecionados para gerar novas soluções nas próximas gerações.
+
+Ao longo das iterações, operações de cruzamento e mutação são aplicadas para introduzir diversidade genética na população e explorar diferentes regiões do espaço de busca. Esse processo evolutivo permite que, gradualmente, as soluções apresentem melhorias sucessivas até que sejam atendidos critérios de parada previamente definidos, como número máximo de gerações ou convergência dos resultados.
+
+X GA fluxograma
+
+A Figura X apresenta um fluxograma simplificado do funcionamento de um algoritmo genético, ilustrando as principais etapas do processo evolutivo, incluindo inicialização da população, avaliação dos indivíduos, seleção, cruzamento, mutação e formação de novas gerações.
+
+
+
 ### 2.5 Redes Neurais Artificiais (RNA)
+
+### 2.6 Geometria do Dispositivo
+O dispositivo utilizado neste trabalho é constituído por nanocilindros de ouro distribuídos periodicamente ao longo de uma superfície de ouro. Essa superfície em virtude da periodicidade possui propriedades de uma grade de difração, e em virtude das nanoestruturas também apresentam propriedades de um nanopartícula LSPR. Pela periodicidade da estrutura há a excitação de modos SPP, conforme será mostrado nos resultados. Por outro lado, em virtude das nanoestruturas assimétricas também há a excitação de uma ressonância estável, sendo fortemente dependente das mudanças na permissividade do meio externo εenv. Esta sensibilidade ao meio externo é o funcionamento por trás da detecção de moléculas e proteínas no entorno do dispositivo. Como o dispositivo está envolto por ar (cuja permissividade é próxima ao do vácuo), a presença de qualquer corpo externo aumenta a permissividade do meio externo, e para que a igualdade na Equação [A DEFINIR] seja mantida a frequência de ressonância deve diminuir, segundo a Equação [A DEFINIR]. Dessa forma, o valor de ressonância passar por um redshift, o que é observado como um deslocamento do pico de ressonância em direção ao infravermelho.
+
 ### 2.4 resumo do capítulo
 
 # capítulo 3
