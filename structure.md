@@ -218,18 +218,45 @@ X GA fluxograma
 
 A Figura X apresenta um fluxograma simplificado do funcionamento de um algoritmo genético, ilustrando as principais etapas do processo evolutivo, incluindo inicialização da população, avaliação dos indivíduos, seleção, cruzamento, mutação e formação de novas gerações.
 
+Falar sobre a figura de maximização.
+
+A Figura X apresenta a evolução de um algoritmo genético aplicado ao problema de maximização da função
+
+y=-x^{2}-\left|x^{3}\right|+x^{\frac{4}{3}}+\frac{x}{7}+1+0.01\sin\left(100x\right)
+
+A Figura X apresenta a evolução de um algoritmo genético aplicado ao problema de maximização da função
+
+genui{"math_block_widget_always_prefetch_v2":{"content":"y=-x^{2}-\left|x^{3}\right|+x^{\frac{4}{3}}+\frac{x}{7}+1+0.01\sin\left(100x\right)"}}
+
+Ao analisar a evolução da função de aptidão ao longo das gerações, é possível observar uma característica típica dos Algoritmos Genéticos: o avanço não ocorre de maneira contínua e uniforme, mas sim em etapas discretas. Durante várias gerações consecutivas, a população pode permanecer estagnada em torno de soluções semelhantes, apresentando pouca ou nenhuma melhora significativa. Entretanto, quando uma nova combinação genética mais favorável é encontrada por meio das operações de cruzamento e mutação, ocorre um salto abrupto na qualidade da solução obtida.
+
+Esse comportamento está relacionado à natureza estocástica dos algoritmos evolutivos. Diferentemente de métodos determinísticos baseados em gradiente, os Algoritmos Genéticos exploram simultaneamente diferentes regiões do espaço de busca, permitindo escapar de máximos locais e encontrar soluções potencialmente superiores. Como consequência, a convergência do algoritmo frequentemente apresenta regiões de estabilidade intercaladas por melhorias repentinas na função objetivo, evidenciando a descoberta de novas configurações mais adequadas para o problema analisado.
 
 
 ### 2.5 Redes Neurais Artificiais (RNA)
+TODO
 
-### 2.6 Geometria do Dispositivo
+### 2.6 Programação Orientada a Objetos (POO)
+
+### 2.7 Geometria do Dispositivo
 O dispositivo utilizado neste trabalho é constituído por nanocilindros de ouro distribuídos periodicamente ao longo de uma superfície de ouro. Essa superfície em virtude da periodicidade possui propriedades de uma grade de difração, e em virtude das nanoestruturas também apresentam propriedades de um nanopartícula LSPR. Pela periodicidade da estrutura há a excitação de modos SPP, conforme será mostrado nos resultados. Por outro lado, em virtude das nanoestruturas assimétricas também há a excitação de uma ressonância estável, sendo fortemente dependente das mudanças na permissividade do meio externo εenv. Esta sensibilidade ao meio externo é o funcionamento por trás da detecção de moléculas e proteínas no entorno do dispositivo. Como o dispositivo está envolto por ar (cuja permissividade é próxima ao do vácuo), a presença de qualquer corpo externo aumenta a permissividade do meio externo, e para que a igualdade na Equação [A DEFINIR] seja mantida a frequência de ressonância deve diminuir, segundo a Equação [A DEFINIR]. Dessa forma, o valor de ressonância passar por um redshift, o que é observado como um deslocamento do pico de ressonância em direção ao infravermelho.
 
-### 2.4 resumo do capítulo
+### 2.8 resumo do capítulo
+TODO
 
 # capítulo 3
 ## etapas preliminares ou metodologia
-### 3.1 tecnica X
+### 3.1 Modelagem da Arquitetura da Biblioteca
+fale sobre o fato de que a intenção de criar uma biblioteca genérica de optimização que servisse para vários problemas diferentes motivou o uso de uma abordagem orientada a objetos. Embora o conceito de POO não faça muito sentido em Python, linguagem selecionada para a elaboração da biblioteca pois o software de FDTD possui uma api de comunicação em python. A Figura X vai mostrar um diagrama de blocos da estrutura de classes mostrando que o fluxo do projeto passa por 4 classes: FADisks, Individual, Population, GA.
+
+O fluxo funciona da seguinte maneira, FADisks é uma classe de dispositivo, o que significa que ela trata diretamente com as APIs de simulação, inferência do resultado usando RNA e outras funções para garantir o funcionamento. Essa classe precisa se preocupar apenas em implementar métodos e atributos para a classe superior ler, Individual.
+
+Individual é a classe mais baixa da biblioteca e possui como função encapsular classes de dispositivos de uma forma previsível para as demais classes superiores. A ideia é que toda a comunicação com o dispositivo passe por Individual. Qualquer tipo de dispositivo pode ser passado para Individual dese que ele possua atributos e métodos implementados de forma correta. No presente trabalho, Individual recebe FADisks como classe device, isso dá a habilidade de criar uma instância da classe Individual sem se preocupar em criar uma instância de FADisks. Individual sabe que o device a ser otimizado é FADisks e cria uma instância interna para si.
+
+
+
+
+
 ### 3.2 resumo do capítulo
 
 # capítulo 4
