@@ -236,9 +236,15 @@ Esse comportamento está relacionado à natureza estocástica dos algoritmos evo
 ### 2.5 Redes Neurais Artificiais (RNA)
 TODO
 
+fale sobre 3 camadas, 95 neurônios e taxa de aprendizado de 0.0003.
+falar sobre como é feito o processo de treinamento e a importância de se separar dados para validação do modelo.
+
+
 ### 2.6 Programação Orientada a Objetos (POO)
 
-### 2.7 Geometria do Dispositivo
+### 2.7 Grid Search
+
+### 2.8 Geometria do Dispositivo
 O dispositivo utilizado neste trabalho é constituído por nanocilindros de ouro distribuídos periodicamente ao longo de uma superfície de ouro. Essa superfície em virtude da periodicidade possui propriedades de uma grade de difração, e em virtude das nanoestruturas também apresentam propriedades de um nanopartícula LSPR. Pela periodicidade da estrutura há a excitação de modos SPP, conforme será mostrado nos resultados. Por outro lado, em virtude das nanoestruturas assimétricas também há a excitação de uma ressonância estável, sendo fortemente dependente das mudanças na permissividade do meio externo εenv. Esta sensibilidade ao meio externo é o funcionamento por trás da detecção de moléculas e proteínas no entorno do dispositivo. Como o dispositivo está envolto por ar (cuja permissividade é próxima ao do vácuo), a presença de qualquer corpo externo aumenta a permissividade do meio externo, e para que a igualdade na Equação [A DEFINIR] seja mantida a frequência de ressonância deve diminuir, segundo a Equação [A DEFINIR]. Dessa forma, o valor de ressonância passar por um redshift, o que é observado como um deslocamento do pico de ressonância em direção ao infravermelho.
 
 ### 2.8 resumo do capítulo
@@ -253,6 +259,19 @@ O fluxo funciona da seguinte maneira, FADisks é uma classe de dispositivo, o qu
 
 Individual é a classe mais baixa da biblioteca e possui como função encapsular classes de dispositivos de uma forma previsível para as demais classes superiores. A ideia é que toda a comunicação com o dispositivo passe por Individual. Qualquer tipo de dispositivo pode ser passado para Individual dese que ele possua atributos e métodos implementados de forma correta. No presente trabalho, Individual recebe FADisks como classe device, isso dá a habilidade de criar uma instância da classe Individual sem se preocupar em criar uma instância de FADisks. Individual sabe que o device a ser otimizado é FADisks e cria uma instância interna para si.
 
+Population é uma classe que abriga um conjunto de Individuals. Ela possui métodos que possibilitam a criação de populações aleatórias ou carregar populações prontas da memória. Métodos utilizados pela classe acima na hierarquia que propriamente implementa o GA, como soma de populações, criação de subpopulações, aplicação de crossover, de mutação, função de avaliação. Métodos de análise de desempenho da população como o retorno do valor médio e máximo de erro e score, totalizando 4 funções. Ainda possuindo método de salvamento da população em memória.
+
+GA é a classe topo que possui uma lista de populações que representa as épocas do algorítimo. O método inicial da classe pode tanto gerar uma população inicial quanto carregar épocas da memória. Essa classe possui também o método que efetivamente implementa o algoritimo genético. Além disso, ela possui outros métodos que ajudam a visualizar resultados como os melhores indivíduos já obtidos, o score médio/máximo por época.
+
+
+### 3.2 Treinamento da Rede Neural
+foram utilizados inicialmente a base de dados gerada no trabalho anterior contendo 1479 amostras para treinar a rede neural. Parte desses dados (5%) foram separados para fazer a avaliação do desempenho do modelo e outra parte para o treinamento. Foi utilizado um método de grid search para procurar a melhor configuração de rede que aproximasse o comportamento do dispositivo. 
+
+-> Tabela contento o resultado do grid search.
+
+A melhor configuração obteve um erro médio de 10,93% para os parâmetros: 2 camadas, 100 neurônios, 200 épocas, 8 amostras por batelada, e taxa de aprendizado de 0,01. Esse erro foi considerado aceitável dado que o propósito da rede é apenas de fazer uma aproximação do resultado, 10% de erro não se mostra significativo.
+
+-> Plot do erro caindo a medida que as épocas de treinamento vão passando.
 
 
 
