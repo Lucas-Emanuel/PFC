@@ -232,7 +232,7 @@ Ao analisar a evolução da função de aptidão ao longo das gerações, é pos
 
 Esse comportamento está relacionado à natureza estocástica dos algoritmos evolutivos. Diferentemente de métodos determinísticos baseados em gradiente, os Algoritmos Genéticos exploram simultaneamente diferentes regiões do espaço de busca, permitindo escapar de máximos locais e encontrar soluções potencialmente superiores. Como consequência, a convergência do algoritmo frequentemente apresenta regiões de estabilidade intercaladas por melhorias repentinas na função objetivo, evidenciando a descoberta de novas configurações mais adequadas para o problema analisado.
 
-explicar parâmetros:
+explicar parâmetros: número de épocas, tamanho da população de cada época, taxa de elitismo, taxa de testagem, número de participantes no torneio de seleção para reprodução, chance de acontecer uma mutação e a chance de um genoma em específico ser alterado.
 
 ### 2.5 Redes Neurais Artificiais (RNA)
 TODO
@@ -246,7 +246,9 @@ falar sobre como é feito o processo de treinamento e a importância de se separ
 ### 2.7 Grid Search
 
 ### 2.8 Geometria do Dispositivo
-O dispositivo utilizado neste trabalho é constituído por nanocilindros de ouro distribuídos periodicamente ao longo de uma superfície de ouro. Essa superfície em virtude da periodicidade possui propriedades de uma grade de difração, e em virtude das nanoestruturas também apresentam propriedades de um nanopartícula LSPR. Pela periodicidade da estrutura há a excitação de modos SPP, conforme será mostrado nos resultados. Por outro lado, em virtude das nanoestruturas assimétricas também há a excitação de uma ressonância estável, sendo fortemente dependente das mudanças na permissividade do meio externo εenv. Esta sensibilidade ao meio externo é o funcionamento por trás da detecção de moléculas e proteínas no entorno do dispositivo. Como o dispositivo está envolto por ar (cuja permissividade é próxima ao do vácuo), a presença de qualquer corpo externo aumenta a permissividade do meio externo, e para que a igualdade na Equação [A DEFINIR] seja mantida a frequência de ressonância deve diminuir, segundo a Equação [A DEFINIR]. Dessa forma, o valor de ressonância passar por um redshift, o que é observado como um deslocamento do pico de ressonância em direção ao infravermelho.
+O dispositivo utilizado neste trabalho é constituído por nanocilindros de ouro distribuídos periodicamente ao longo de uma superfície de ouro. Essa superfície em virtude da periodicidade possui propriedades de uma grade de difração, e em virtude das nanoestruturas também apresentam propriedades de um nanopartícula LSPR. Pela periodicidade da estrutura há a excitação de modos SPP, conforme será mostrado nos resultados. Por outro lado, em virtude das nanoestruturas assimétricas também há a excitação de uma ressonância estável, sendo fortemente dependente das mudanças na permissividade do meio externo εenv. Esta sensibilidade ao meio externo é o funcionamento por trás da detecção de moléculas e proteínas no entorno do dispositivo. Como o dispositivo está envolto por água, a presença de qualquer corpo externo aumenta a permissividade do meio externo, e para que a igualdade na Equação [A DEFINIR] seja mantida a frequência de ressonância deve diminuir, segundo a Equação [A DEFINIR]. Dessa forma, o valor de ressonância passar por um redshift, o que é observado como um deslocamento do pico de ressonância em direção ao infravermelho.
+
+-> Foto do dispositivo
 
 ### 2.8 resumo do capítulo
 TODO
@@ -263,6 +265,7 @@ Individual é a classe mais baixa da biblioteca e possui como função encapsula
 Population é uma classe que abriga um conjunto de Individuals. Ela possui métodos que possibilitam a criação de populações aleatórias ou carregar populações prontas da memória. Métodos utilizados pela classe acima na hierarquia que propriamente implementa o GA, como soma de populações, criação de subpopulações, aplicação de crossover, de mutação, função de avaliação. Métodos de análise de desempenho da população como o retorno do valor médio e máximo de erro e score, totalizando 4 funções. Ainda possuindo método de salvamento da população em memória.
 
 GA é a classe topo que possui uma lista de populações que representa as épocas do algorítimo. O método inicial da classe pode tanto gerar uma população inicial quanto carregar épocas da memória. Essa classe possui também o método que efetivamente implementa o algoritimo genético. Além disso, ela possui outros métodos que ajudam a visualizar resultados como os melhores indivíduos já obtidos, o score médio/máximo por época.
+Ela que é responsável por testar os indivíduos primeiramente na RNA e depois separar os melhores para serem validados no software FDTD. A taxa que diz quantos serão validados pelo FDTD é um hiperparâmetro do método.
 
 
 ### 3.2 Treinamento da Rede Neural
@@ -276,15 +279,45 @@ A melhor configuração obteve um erro médio de 10,93% para os parâmetros: 2 c
 
 ### 3.3 Execução do GA
 Depois de ter a rede treinada e o passo atual envolve executar rodadas de GA alterando seus parâmetros a fim de encontrar o melhor dispositivo. 
-São parâmetros do GA o número de épocas, o tamanho da população de cada época, taxa de elitismo
+São parâmetros do GA o número de épocas, o tamanho da população de cada época, taxa de elitismo, taxa de testagem, número de participantes no torneio de seleção para reprodução, chance de acontecer uma mutação e a chance de um genoma em específico ser alterado.
 
+O procedimento de execução consiste em instanciar um objeto do tipo GA e dizer a ele qual o tamanho da primeira população aleatória e o caminho em que o progresso deverá ser salvo.
+Após isso, todos os parâmetros de execução devem ser passados para o método de execução. A partir de então, o computador passa a trabalhar sozinho gerando novas populações até que o numero estipulado de épocas seja atingido.
 
+É esperado que se tenha que executar o algorítmo algumas vezes para conseguir obter uma noção de propriedades do problema abordado, como velocidade de convergência e erro do algorítmo.
 
 ### 3.2 resumo do capítulo
 
 # capítulo 4
 ## resultados
-### 4.1 atividades do projeto
+Este capitulo pretende apresentar os resultados obtidos ao longo do projeto. Nele é apresentado o melhor dispositivo encontrado e dados da execução do algoritimo. Também é apresentado resultados de validação usando simulação de maior precisão.
+
+### 4.1 Performance do Algorítmo
+Como esperado, múltiplas tentativas foram necessárias para conseguir ajustar os parâmetros de execução do GA e também explorar um espaço amostral maior. Como o GA tente a convergir para um máximo, apesar de todo o esforço de exploração, esse máximo ainda pode ser local; por este motivo é importante executar mais de uma vez o algorítmo.
+
+ga.run_ga(n_epoch= 200, 
+          heritage_ratio = 0.05, 
+          test_ratio = 0.1,
+          k_turner = 2, 
+          mutation_ratio = 0.2, 
+          gene_mutation_ratio = 0.15)
+
+2 figuras arranjadas em forma de matriz:
+- coluna A: Absorção máxima da população por época
+- coluna B: Absorção máxima apenas de individuos simulados por época
+- coluna C: Absorção média da população
+2 linhas mostram diferentes execuções do algorítmo. Em A é possível observar as características de saltos típicos de um GA. Em B é possível notar que além da característica de saltos discretos, as figuras apresentam quedas na absorção pois apenas a melhor resposta de indivíduos simulados estão sendo plotadas. Se individuos gerados aleatoriamente possuem uma configuração onde a RNA possui um erro maior, esta poderá classificar um individuo ruim como bom e separar ele para validação no software. A simulação então retornará o valor real de absorção do indiviuo e ele possuirá um score menor do que os seus irmãos apenas simulados. Em C é possível ver a absorção média da população e como a sua tendência é de crescimento até que o algorítmo convirja.
+
+(Não se )
+
+A execução de GA número 1 mostra
+
+
+### 4.2 Resposta dos dispositivos
+
+Fazer um plot 3D para cada rodada de GA
+
+### 4.2 Comparação com e sem RNA
 ### 4.2 requisitos do sistema
 ### 4.3 desenvolvimento e implementação
 ### 4.4 testes
