@@ -312,9 +312,23 @@ Parâmetros de execução de 2:(n_epoch= 200, heritage_ratio = 0.00, test_ratio 
 
 ### 4.2 Resposta dos dispositivos
 
-Fazer um plot 3D para cada rodada de GA
+plot 3D mostrando várias respostas 2D aglomeradas parecendo fatias de uma superficie em 3D. Cada fatia é a resposta de absorção em função do comprimento de onda, eixo z é absorção, eixo x é o comprimento de onda e y é a época. A resposta é do melhor individuo daquela época.
+Há também um heatmap contendo a mesma informação, porém ele dá a habilidade de interpretar melhor a variação da posição do pico no eixo x. Ao passo que o plot 3D permite ver melhor o aumento do tamanho do pico de absorçao ao longo do eixo y.
+
+Resposta do melhor dispositivo.
+
+### 4.3 Erro da Rede
+plotar o score de simulação e de predição do melhor individuo
+
 
 ### 4.2 Comparação com e sem RNA
+
+O desempenho do método também pode ser observado na economia de simulações. Enquanto para a execução de um GA comum cada individuo precisaria ser simulado, o método apresentado neste trabalho permite diminuir o número de simulações em 90%.
+Apesar disso, o método continua requerendo a geração de uma base de dados para treinamento que implica em um custo inicial alto. Porém, este custo inicial rápidamente se prova ser vantajoso pois, levando em consideração que GA puro requer uma taxa de simulação de um pra um, sua reta de custo (simulação por individuo) pode ser definida por Equação 1 (y=x). Já o método utilizado neste trabalho possui um custo inicial de treinamento, logo a reta ganha um coeficiente constante. Entretanto, o custo de simulação já não é mais 1:1, mas sim 0,1:1; levando à reta definida por Equação 2 (y=0,1x+1500).
+Ao igualar as duas equações obtemos que as duas retas se encontram de acordo com Equação 3, significando que a partir do indivíduo 1667 o método é mais eficiente no uso de poder computacional.
+A figura X mostra as duas retas definidas pelas equações 1 e 2.
+Interessante notar que a figura x possui uma reta vertical que mostra o número de individuos necessários para realizar uma rodade de GA de 100 épocas por 100 indivíduos por população. Podemos ver graficamente que o custo computacional inicial é superado em apenas uma rodada de GA.
+
 ### 4.2 requisitos do sistema
 ### 4.3 desenvolvimento e implementação
 ### 4.4 testes
