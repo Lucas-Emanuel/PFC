@@ -329,6 +329,8 @@ Ao igualar as duas equações obtemos que as duas retas se encontram de acordo c
 A figura X mostra as duas retas definidas pelas equações 1 e 2.
 Interessante notar que a figura x possui uma reta vertical que mostra o número de individuos necessários para realizar uma rodade de GA de 100 épocas por 100 indivíduos por população. Podemos ver graficamente que o custo computacional inicial é superado em apenas uma rodada de GA.
 
+Trazer parâmetros reais de tempo gasto pelo GA run-4
+
 ### 4.2 requisitos do sistema
 ### 4.3 desenvolvimento e implementação
 ### 4.4 testes
