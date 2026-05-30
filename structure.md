@@ -295,23 +295,20 @@ Este capitulo pretende apresentar os resultados obtidos ao longo do projeto. Nel
 ### 4.1 Performance do Algorítmo
 Como esperado, múltiplas tentativas foram necessárias para conseguir ajustar os parâmetros de execução do GA e também explorar um espaço amostral maior. Como o GA tente a convergir para um máximo, apesar de todo o esforço de exploração, esse máximo ainda pode ser local; por este motivo é importante executar mais de uma vez o algorítmo.
 
-ga.run_ga(n_epoch= 200, 
-          heritage_ratio = 0.05, 
-          test_ratio = 0.1,
-          k_turner = 2, 
-          mutation_ratio = 0.2, 
-          gene_mutation_ratio = 0.15)
-
 2 figuras arranjadas em forma de matriz:
 - coluna A: Absorção máxima da população por época
 - coluna B: Absorção máxima apenas de individuos simulados por época
 - coluna C: Absorção média da população
 2 linhas mostram diferentes execuções do algorítmo. Em A é possível observar as características de saltos típicos de um GA. Em B é possível notar que além da característica de saltos discretos, as figuras apresentam quedas na absorção pois apenas a melhor resposta de indivíduos simulados estão sendo plotadas. Se individuos gerados aleatoriamente possuem uma configuração onde a RNA possui um erro maior, esta poderá classificar um individuo ruim como bom e separar ele para validação no software. A simulação então retornará o valor real de absorção do indiviuo e ele possuirá um score menor do que os seus irmãos apenas simulados. Em C é possível ver a absorção média da população e como a sua tendência é de crescimento até que o algorítmo convirja.
 
-(Não se )
+(Não use o termos linhas e colunas, assuma que as imagens terão indices 1a, 1b, 1c, 2a, 2b, 2c. Pode se referir no geral como "as figuras a's, b's e c's)
 
-A execução de GA número 1 mostra
+A execução de GA número 1 mostra uma rodada de 109 épocas onde é possível ver a convergência do algoritmo, um longo período sem mudança no dispositivo máximo (A) e um inclinação quase horizontal nas ultimas épocas (C).
 
+A execução do GA número 2 teve o intúito de forçar uma maior exploração do espaço amostral e convergência mais lenta. Para isso, a probabilidade de mutação foi aumentada para 30%, o torneio foi diminuído para 2 indivíduos e taxa de elitismo zerada. É possível notar que as respostas A e B de 2 apresentam quedas devido a falta de elitismo. Melhores indivíduos das gerações passadas não são perpetuadas para as novas gerações, fazendo com que a resposta caia caso não houver nenhum filho com o desempenho igual ou melhor que o do pai.
+
+Parâmetros de execução de 1:(n_epoch= 200, heritage_ratio = 0.05, test_ratio = 0.1, k_turner = 2, mutation_ratio = 0.2, gene_mutation_ratio = 0.15)
+Parâmetros de execução de 2:(n_epoch= 200, heritage_ratio = 0.00, test_ratio = 0.1,k_turner = 2, mutation_ratio = 0.3, gene_mutation_ratio = 0.1)
 
 ### 4.2 Resposta dos dispositivos
 
