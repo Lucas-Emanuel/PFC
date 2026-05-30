@@ -232,6 +232,7 @@ Ao analisar a evolução da função de aptidão ao longo das gerações, é pos
 
 Esse comportamento está relacionado à natureza estocástica dos algoritmos evolutivos. Diferentemente de métodos determinísticos baseados em gradiente, os Algoritmos Genéticos exploram simultaneamente diferentes regiões do espaço de busca, permitindo escapar de máximos locais e encontrar soluções potencialmente superiores. Como consequência, a convergência do algoritmo frequentemente apresenta regiões de estabilidade intercaladas por melhorias repentinas na função objetivo, evidenciando a descoberta de novas configurações mais adequadas para o problema analisado.
 
+explicar parâmetros:
 
 ### 2.5 Redes Neurais Artificiais (RNA)
 TODO
@@ -273,6 +274,9 @@ A melhor configuração obteve um erro médio de 10,93% para os parâmetros: 2 c
 
 -> Plot do erro caindo a medida que as épocas de treinamento vão passando.
 
+### 3.3 Execução do GA
+Depois de ter a rede treinada e o passo atual envolve executar rodadas de GA alterando seus parâmetros a fim de encontrar o melhor dispositivo. 
+São parâmetros do GA o número de épocas, o tamanho da população de cada época, taxa de elitismo
 
 
 
